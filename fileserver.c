@@ -78,7 +78,7 @@ void interuptHandler (int sigNum)
 	//avoid / by 0 errors
 	if (numFile != 0){
 		
-		averageTime = totalTime / numFile;
+		averageTime = (float)totalTime / numFile;
 
 
 	}
