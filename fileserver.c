@@ -34,7 +34,6 @@ int main() {
 void* serviceFile(void* arg){
 	char* fileName = (char*)arg;
 	int prob = rand() % (101 - 1) + 1;
-        printf("%d\n",prob);	
 	if (prob <= 20) {
 	  int stime = rand() % 4;
           sleep(7+stime);
