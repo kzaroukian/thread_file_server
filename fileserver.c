@@ -11,13 +11,13 @@ void interuptHandler(int sigNum);
 
 int numFile = 0;
 
+
 int main() {
-
-	signal (SIGINT,  interuptHandler); 
-
+        signal(SIGINT, interuptHandler);	
 	while(1){
 		//malloc to create new memory for each thread to avoid race condition
 		char* fileName = malloc(sizeof(char) * 50);
+		printf("Enter file name: ");
 		fgets(fileName, 50, stdin);
 		pthread_t thread;
 		pthread_create(&thread, NULL, serviceFile, fileName);
@@ -28,11 +28,19 @@ int main() {
 
 void* serviceFile(void* arg){
 	char* fileName = (char*)arg;
-	
-	sleep(1);
-	printf("processing file %s", fileName);
-	numFile++;
+	int prob = rand() % (101 - 1) + 1;
+        printf("%d\n",prob);	
+	if (prob <= 20) {
+	  int stime = rand() % 4;
+          sleep(7+stime);
+          printf("File not in cache, processing file %s \n",fileName);	  
+	} else {
+	  sleep(1);
+	  printf("File found in cache, processing file %s\n", fileName);
+	}
+        numFile++;
 	free(fileName);
+
 	return NULL;
 }
 
