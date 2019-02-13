@@ -6,6 +6,8 @@
 #include <string.h>
 #include <signal.h>
 
+// Lab 4 by Marc Chesebro and Kaylin Zaroukian
+
 void* serviceFile(void* arg);
 void interuptHandler(int sigNum);
 
@@ -81,7 +83,7 @@ void interuptHandler (int sigNum)
 
 
 	}
-	printf("averge file process time: %f\n", averageTime);
+	printf("average file process time: %f\n", averageTime);
 
 	//unlock mutex
 	pthread_mutex_unlock(&fileMutex);
